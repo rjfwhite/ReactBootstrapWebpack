@@ -7,6 +7,15 @@ var Navbar = require('react-bootstrap').Navbar;
 var NavItem = require('react-bootstrap').NavItem;
 var DropdownButton = require('react-bootstrap').DropdownButton;
 var MenuItem = require('react-bootstrap').MenuItem;
+
+var assert = require('./assert').assert
+
+var ActionEmitter = require('./actions/ActionEmitter')
+var myEmitter = new ActionEmitter()
+
+
+assert(2 == 1, "One should equal two")
+
 module.exports = React.createClass({
     displayName: 'HelloReact',
     render: function(){
