@@ -8,7 +8,7 @@ var updateBinds = function(name) {
 	if(stores[name] != undefined) {
 		if(storeBinders[name] != undefined) {
 			storeBinders[name].forEach(function(binder) {
-			binder(stores[name].data)
+			binder(stores[name])
 		})
 		}
 	}

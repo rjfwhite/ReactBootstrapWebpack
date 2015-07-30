@@ -1,16 +1,18 @@
-module.exports = function(actions, stores, name) {
+module.exports = function (actions, stores, name) {
 
-	actions.subscribe(function(action) {
-		if(action.type == "setEntity") {
-			publicSelf.data = action.entity
-			stores.update(name)
-		}
-	})
+    actions.when("setEntity", function (action) {
+        publicSelf = action.entity
+        stores.mount(name, publicSelf)
+    })
 
-	var publicSelf = {
-		data: 32
-	}
+    actions.when("boopClicked", function (action) {
+        if(action.id == publicSelf.id) {
+            publicSelf.id += 1
+            stores.mount(name, publicSelf)
+        }
+    })
 
-	stores.mount(name, publicSelf)
-	return publicSelf
+    var publicSelf = {
+    }
+    stores.mount(name, publicSelf)
 }
